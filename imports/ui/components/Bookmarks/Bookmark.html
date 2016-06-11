@@ -1,3 +1,6 @@
 <template name="Bookmark">
-  <li>{{bookmark._id}}: {{bookmark.title}}</li>
+  <li>
+    <span>{{bookmark.title}} - </span>
+    <a href={{bookmark.uri}}>{{bookmark.uri}}</a>
+  </li>
 </template>
