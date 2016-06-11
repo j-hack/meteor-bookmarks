@@ -7,14 +7,14 @@ meteor
 mkdir -p imports/ui/{components,containers,layouts} \
          imports/ui/components/Bookmarks \
          imports/api/bookmarks/server \
-         imports/startup \
+         imports/startup/{server,client} \
          imports/lib
 
 touch imports/api/collections.js \
       imports/api/bookmarks/{bookmarks,methods}.{js,html} \
       imports/api/bookmarks/server/publications.js \
-      imports/startup/client.js \
-      imports/startup/server.js \
+      imports/startup/client/index.js \
+      imports/startup/server/index.js \
       imports/ui/components/Bookmarks/{Bookmark,Bookmarks}.{js,html} \
       imports/ui/layouts/AppLayout.{js,html} \
       imports/ui/containers/AppContainer.{js,html} \

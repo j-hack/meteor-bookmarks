@@ -12,3 +12,9 @@ FlowRouter.route('/', {
     BlazeLayout.render('AppContainer');
   }
 });
+
+FlowRouter.notFound = {
+  action: function() {
+    FlowRouter.go('/');
+  }
+};

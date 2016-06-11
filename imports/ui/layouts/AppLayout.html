@@ -1,7 +1,13 @@
 <template name="AppLayout">
-  <div class="container">
-    <h1>Bookamrks</h1>
-    <h2>AppLayout</h2>
-    {{> Bookmarks bookmarks=bookmarks}}
+  <div class="app-layout">
+    <div class="container">
+      <h1>Bookamrks</h1>
+
+      <div class="tile box">
+        {{> BookmarkForm props=props}}
+      </div>
+
+      {{> Bookmarks bookmarks=props.bookmarks}}
+    </div>
   </div>
 </template>
