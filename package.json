@@ -7,6 +7,7 @@
     "pretest": "npm run lint --silent"
   },
   "dependencies": {
+    "bulma": "0.0.28",
     "meteor-node-stubs": "~0.2.0"
   },
   "description": "",
@@ -23,20 +24,28 @@
   "author": "Nobutaka OSHIRO",
   "license": "MIT",
   "eslintConfig": {
-     "plugins": [
-       "meteor"
-     ],
-     "extends": [
-       "airbnb",
-       "plugin:meteor/recommended"
-     ],
-     "rules": {
-       "meteor/eventmap-params": [
-         2, { "templateInstanceParamName": "instance" }
-       ],
-       "import/no-unresolved": [
-         2, { "ignore": ["^meteor/"] }
-       ]
-     }
-   }
+    "plugins": [
+      "meteor"
+    ],
+    "extends": [
+      "airbnb",
+      "plugin:meteor/recommended"
+    ],
+    "rules": {
+      "meteor/eventmap-params": [
+        2,
+        {
+          "templateInstanceParamName": "instance"
+        }
+      ],
+      "import/no-unresolved": [
+        2,
+        {
+          "ignore": [
+            "^meteor/"
+          ]
+        }
+      ]
+    }
+  }
 }

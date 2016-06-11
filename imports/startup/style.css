@@ -1,0 +1,25 @@
+/* CSS declarations go here */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 1rem;
+  color: rgba(0,0,0,0.8);
+}
+
+h1,h2,h3,h4,h5,h6 {
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 3.0rem;
+}
+
+h2 {
+  font-size: 2.0rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}

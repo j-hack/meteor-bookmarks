@@ -1,15 +1,11 @@
 import { Template } from 'meteor/templating';
 import './AppContainer.html';
+import '../layouts/AppLayout';
 
-const bookmarks = [
-  {_id: 1, title: 'bookmark 1'},
-  {_id: 2, title: 'bookmark 2'},
-  {_id: 3, title: 'bookmark 3'},
-  {_id: 4, title: 'bookmark 5'},
-  {_id: 5, title: 'bookmark 6'},
-];
+import { Bookmarks } from '../../api/collections';
 
 Template.AppContainer.onCreated(function() {
+  this.subscribe('bookmarks.all');
 });
 
 Template.AppContainer.onRendered(function() {
@@ -22,5 +18,5 @@ Template.AppContainer.events({
 });
 
 Template.AppContainer.helpers({
-  bookmarks,
+  bookmarks: () => Bookmarks.find(),
 });

@@ -1,11 +1,11 @@
-import Bookmarks from './bookmarks/bookmarks';
+import _Bookmarks from './bookmarks/bookmarks';
 
-const Collections = {
-  Bookmarks,
-};
-
-export default Collections;
+export const Bookmarks = _Bookmarks;
 
 if (Meteor.isDevelopment) {
+  const Collections = {
+    Bookmarks,
+  };
+
   global.Collections = Collections;
 }

@@ -19,6 +19,8 @@ touch imports/api/collections.js \
       imports/ui/layouts/AppLayout.{js,html} \
       imports/ui/containers/AppContainer.{js,html} \
       imports/startup/routes.js \
+      imports/startup/style.js \
+      imports/startup/style.css \
       imports/lib/blaze_layout.js
 
 meteor remove autopublish insecure
@@ -37,4 +39,10 @@ meteor add aldeed:simple-schema \
 
 ```bash
 meteor npm install --save-dev eslint-config-airbnb eslint-plugin-import eslint-plugin-meteor eslint-plugin-react eslint-plugin-jsx-a11y eslint
+```
+
+# Customize CSS
+
+```bash
+npm install -S bulma
 ```
