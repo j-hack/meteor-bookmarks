@@ -1,3 +1,8 @@
 <template name="AppContainer">
+  {{#unless isReady}}
+    <p>
+      Now Loading...
+    </p>
+  {{/unless}}
   {{> AppLayout bookmarks=bookmarks props=props}}
 </template>
