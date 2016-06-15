@@ -10,11 +10,14 @@ const props = {
     event.preventDefault();
     const title = event.target.title.value;
     const uri = event.target.uri.value;
-    Meteor.call('Bookmarks.insert', title, uri, (err, res) => {
+    const note = event.target.note.value;
+    const newDoc = {title, uri, note};
+    Meteor.call('Bookmarks.insert', newDoc, (err, res) => {
       console.log(err, res);
       if (!err) {
         event.target.title.value = "";
         event.target.uri.value = "";
+        event.target.note.value = "";
       }
     });
   },
@@ -37,5 +40,5 @@ Template.AppContainer.events({
 
 Template.AppContainer.helpers({
   props,
-  isReady: () => Template.instance().subscriptionsReady(),  
+  isReady: () => Template.instance().subscriptionsReady(),
 });

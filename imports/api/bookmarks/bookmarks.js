@@ -41,9 +41,11 @@ Bookmarks.schema = new SimpleSchema({
   createdAt: {
     type: Date,
     denyUpdate: true,
+    optional: true,
   },
   updatedAt: {
     type: Date,
+    optional: true,
   }
 });
 

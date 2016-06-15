@@ -2,3 +2,7 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.tile.box.mod-no-shadow {
+  box-shadow: none;
+}

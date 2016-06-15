@@ -2,7 +2,7 @@
   <form class="js-bookmark-form bookmark-form">
     <div class="control is-horizontal">
       <div class="control-label">
-        <label class="label">URL</label>
+        <label class="label">URL<span style="color: red;">*</span></label>
       </div>
       <p class="control">
         <input class="input" type="text" name="uri" placeholder="http://...">
@@ -11,10 +11,19 @@
 
     <div class="control is-horizontal">
       <div class="control-label">
-        <label class="label">Title (optional)</label>
+        <label class="label">Title</label>
       </div>
       <p class="control">
-        <input class="input" type="text" name="title" placeholder="Page Title">
+        <input class="input" type="text" name="title" placeholder="(optional)">
+      </p>
+    </div>
+
+    <div class="control is-horizontal">
+      <div class="control-label">
+        <label class="label">Note</label>
+      </div>
+      <p class="control">
+        <textarea class="textarea" name="note" placeholder="(optional)"></textarea>
       </p>
     </div>
 
