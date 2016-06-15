@@ -19,6 +19,7 @@ const props = {
     });
   },
   bookmarks: () => Bookmarks.find({}, {sort: {createdAt: -1}}),
+  count: () => Bookmarks.find().count(),
 };
 
 Template.AppContainer.onCreated(function() {
@@ -36,4 +37,5 @@ Template.AppContainer.events({
 
 Template.AppContainer.helpers({
   props,
+  isReady: () => Template.instance().subscriptionsReady(),  
 });

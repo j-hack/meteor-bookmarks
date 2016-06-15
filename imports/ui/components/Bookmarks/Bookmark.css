@@ -1,0 +1,15 @@
+.bookmark-list.mod-square {
+  position: relative;
+  float: left;
+  background-color: #00FF00;
+  width: 10vw;
+  height: 10vw;
+  overflow: hidden;
+  margin: 5px;
+}
+
+.bookmark-list.mod-square > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

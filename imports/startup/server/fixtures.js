@@ -26,10 +26,11 @@ Meteor.startup(() => {
         uri: 'https://github.com/'
       },
     ];
-    _.times(1000, (num) => {
+    _.times(100, (num) => {
       data.forEach((doc) => {
-        doc.title = `doc.title ${num + 1}`;
-        Bookmarks.insert(doc);
+        const newDoc = Object.assign({}, doc);
+        newDoc.title = `${doc.title} ${num + 1}`;
+        Bookmarks.insert(newDoc);
       });
     });
   }
