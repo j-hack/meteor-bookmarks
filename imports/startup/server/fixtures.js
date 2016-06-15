@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Bookmarks } from '../../api/collections';
+import { _ } from 'meteor/underscore';
 
 Meteor.startup(() => {
   if (Bookmarks.find().count() === 0) {
@@ -25,8 +26,11 @@ Meteor.startup(() => {
         uri: 'https://github.com/'
       },
     ];
-    data.forEach((doc) => {
-      Bookmarks.insert(doc);
+    _.times(1000, (num) => {
+      data.forEach((doc) => {
+        doc.title = `doc.title ${num + 1}`;
+        Bookmarks.insert(doc);
+      });
     });
   }
 });
