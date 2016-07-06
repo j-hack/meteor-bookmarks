@@ -30,13 +30,8 @@ Bookmarks.schema = new SimpleSchema({
     type: String,
     defaultValue: '',
   },
-  uri: {
+  url: {
     type: String,
-  },
-  note: {
-    type: String,
-    optional: true,
-    max: 10000,
   },
   createdAt: {
     type: Date,

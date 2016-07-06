@@ -7,31 +7,54 @@ Meteor.startup(() => {
     const data = [
       {
         title: 'Yahoo! JAPAN',
-        uri: 'http://www.yahoo.co.jp',
+        url: 'http://www.yahoo.co.jp',
       },
       {
         title: 'Build Apps with JavaScript | Meteor',
-        uri: 'https://www.meteor.com',
+        url: 'https://www.meteor.com',
       },
       {
         title: 'ホーム - Qiita',
-        uri: 'http://qiita.com/',
+        url: 'http://qiita.com/',
       },
       {
         title: 'Crater.io: Where Real Time web & mobile dev news lands',
-        uri: 'https://crater.io/',
+        url: 'https://crater.io/',
       },
       {
         title: 'GitHub',
-        uri: 'https://github.com/'
+        url: 'https://github.com/',
+      },
+      {
+        title: 'Hacker News',
+        url: 'https://news.ycombinator.com/',
+      },
+      {
+        title: 'Google',
+        url: 'https://google.co.jp/',
+      },
+      {
+        title: 'Gmail',
+        url: 'https://mail.google.com/',
+      },
+      {
+        title: 'Meteor Blog',
+        url: 'http://info.meteor.com/blog',
+      },
+      {
+        title: 'Meteor forums',
+        url: 'https://forums.meteor.com/',
       },
     ];
-    _.times(100, (num) => {
-      data.forEach((doc) => {
-        const newDoc = Object.assign({}, doc);
-        newDoc.title = `${doc.title} ${num + 1}`;
-        Bookmarks.insert(newDoc);
-      });
+    // _.times(100, (num) => {
+    //   data.forEach((doc) => {
+    //     const newDoc = Object.assign({}, doc);
+    //     newDoc.title = `${doc.title} ${num + 1}`;
+    //     Bookmarks.insert(newDoc);
+    //   });
+    // });
+    data.forEach((doc) => {
+      Bookmarks.insert(doc);
     });
   }
 });

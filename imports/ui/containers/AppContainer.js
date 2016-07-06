@@ -9,15 +9,13 @@ const props = {
   onSubmitBookmarkForm(event, inst) {
     event.preventDefault();
     const title = event.target.title.value;
-    const uri = event.target.uri.value;
-    const note = event.target.note.value;
-    const newDoc = {title, uri, note};
+    const url = event.target.url.value;
+    const newDoc = {title, url};
     Meteor.call('Bookmarks.insert', newDoc, (err, res) => {
       console.log(err, res);
       if (!err) {
         event.target.title.value = "";
-        event.target.uri.value = "";
-        event.target.note.value = "";
+        event.target.url.value = "";
       }
     });
   },

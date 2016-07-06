@@ -1,7 +1,6 @@
 <template name="Bookmark">
-  <li class="bookmark-list mod-square">
-    <a href={{bookmark.uri}} target="_blank">
-      {{bookmark.title}}
-    </a>
-  </li>
+  <a href={{bookmark.url}} target="_blank" class="Bookmark panel-block">
+    <span class="Bookmark-title">{{bookmark.title}}</span>
+    <span class="Bookmark-url">{{bookmark.url}}</span>
+  </a>
 </template>

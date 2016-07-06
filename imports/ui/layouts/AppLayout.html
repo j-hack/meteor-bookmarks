@@ -1,13 +1,11 @@
 <template name="AppLayout">
   <div class="app-layout">
     <div class="container">
-      <h1>Bookmarks ({{props.count}})</h1>
-
       <div class="tile box mod-no-shadow">
         {{> BookmarkForm props=props}}
       </div>
 
-      {{> Bookmarks bookmarks=props.bookmarks}}
+      {{> Bookmarks bookmarks=props.bookmarks count=props.count}}
     </div>
   </div>
 </template>

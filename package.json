@@ -1,5 +1,5 @@
 {
-  "name": "meteor-rest-example",
+  "name": "meteor-bookmarks",
   "private": true,
   "scripts": {
     "start": "meteor run",
@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "bulma": "0.0.28",
-    "meteor-node-stubs": "~0.2.0"
+    "meteor-node-stubs": "~0.2.0",
+    "spike": "^0.7.0"
   },
   "description": "",
   "version": "0.1.0",

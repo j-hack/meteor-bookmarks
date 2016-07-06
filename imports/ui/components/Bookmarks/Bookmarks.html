@@ -1,7 +1,17 @@
 <template name="Bookmarks">
-  <ul>
+  <nav class="panel" style="background-color: white;">
+    <p class="panel-heading">
+      Bookmarks ({{count}})
+    </p>
+
+    <p class="panel-tabs">
+      <a class="is-active" href="#">All</a>
+      <a href="#">Stared</a>
+      <a href="#"></a>
+    </p>
+
     {{#each bookmark in bookmarks}}
       {{> Bookmark bookmark=bookmark}}
     {{/each}}
-  </ul>
+  </nav>
 </template>
