@@ -32,7 +32,8 @@ meteor add aldeed:simple-schema \
            kadira:blaze-layout \
            arillo:flow-router-helpers \
            zimme:active-route \
-           reactive-var
+           reactive-var \
+           http
 ```
 
 # Code Style

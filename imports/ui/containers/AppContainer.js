@@ -21,6 +21,13 @@ const props = {
   },
   bookmarks: () => Bookmarks.find({}, {sort: {createdAt: -1}}),
   count: () => Bookmarks.find().count(),
+  fetchTitle(url, callback) {
+    Meteor.call('Bookmarks.fetchTitle', url, (err, title) => {
+      if (_.isFunction(callback)) {
+        callback(err, title);
+      }
+    });
+  },
 };
 
 Template.AppContainer.onCreated(function() {

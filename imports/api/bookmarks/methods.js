@@ -20,4 +20,21 @@ Meteor.methods({
     }).validate({docId});
     return Bookmarks.remove(docId);
   },
+  'Bookmarks.fetchTitle'(url) {
+    new SimpleSchema({
+      url: {
+        type: String,
+        regEx: /^https?:\/\//
+      },
+    }).validate({url});
+
+
+    const res = HTTP.get(url);
+
+    if (res.statusCode !== 200) { throw new Meteor.Error(res.statusCode) }
+
+    const title = res.content.match(/<title[^>]*>([^<]+)<\/title>/)[1];
+
+    return title;
+  },
 });
