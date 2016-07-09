@@ -35,13 +35,13 @@ meteor add aldeed:simple-schema \
            reactive-var \
            http \
            accounts-ui \
-           accounts-password 
+           accounts-password
 ```
 
 # Code Style
 
 ```bash
-meteor npm install --save-dev eslint-config-airbnb eslint-plugin-import eslint-plugin-meteor eslint-plugin-react eslint-plugin-jsx-a11y eslint
+meteor npm install --save-dev eslint@^2.9.0 eslint-config-airbnb eslint-plugin-import eslint-plugin-meteor eslint-plugin-react eslint-plugin-jsx-a11y
 ```
 
 # Customize CSS

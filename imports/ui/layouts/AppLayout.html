@@ -1,9 +1,16 @@
 <template name="AppLayout">
   <div class="app-layout">
     <div class="container">
+
       <div class="tile box mod-no-shadow">
-        {{> BookmarkForm props=props}}
+        {{> loginButtons}}
       </div>
+
+      {{#if currentUser}}
+        <div class="tile box mod-no-shadow">
+          {{> BookmarkForm props=props}}
+        </div>
+      {{/if}}
 
       {{> Bookmarks bookmarks=props.bookmarks count=props.count}}
     </div>
