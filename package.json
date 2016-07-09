@@ -4,16 +4,19 @@
   "scripts": {
     "start": "meteor run",
     "lint": "eslint .",
-    "pretest": "npm run lint --silent"
+    "pretest": "npm run lint --silent",
+    "postinstall": "cp -R node_modules/font-awesome/fonts ./public/"
   },
   "dependencies": {
     "bulma": "0.0.28",
+    "font-awesome": "^4.6.3",
     "meteor-node-stubs": "~0.2.0",
     "spike": "^0.7.0"
   },
   "description": "",
   "version": "0.1.0",
   "devDependencies": {
+    "babel-eslint": "^6.1.1",
     "eslint": "^2.13.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.10.2",

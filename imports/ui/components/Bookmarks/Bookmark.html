@@ -1,5 +1,13 @@
 <template name="Bookmark">
   <a href={{bookmark.url}} target="_blank" class="Bookmark panel-block">
+    <span class="panel-icon" style="font-size: 1.2rem; line-height: 140%;">
+      {{#if bookmark.staredAt}}
+        <i class="fa fa-star"></i>
+      {{else}}
+        <i class="fa fa-star-o"></i>
+      {{/if}}
+    </span>
+
     <span class="Bookmark-title">{{bookmark.title}}</span>
     <span class="Bookmark-url">{{bookmark.url}}</span>
   </a>

@@ -47,5 +47,5 @@ meteor npm install --save-dev eslint@^2.9.0 eslint-config-airbnb eslint-plugin-i
 # Customize CSS
 
 ```bash
-npm install -S bulma
+npm install -S bulma font-awesome
 ```

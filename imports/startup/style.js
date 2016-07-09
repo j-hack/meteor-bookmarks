@@ -1,2 +1,3 @@
-import '../../node_modules/bulma/css/bulma.min.css';
+import 'font-awesome/css/font-awesome.css';
+import 'bulma/css/bulma.min.css';
 import './style.css';
