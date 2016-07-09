@@ -35,7 +35,8 @@ meteor add aldeed:simple-schema \
            reactive-var \
            http \
            accounts-ui \
-           accounts-password
+           accounts-password \
+           nimble:restivus
 ```
 
 # Code Style
