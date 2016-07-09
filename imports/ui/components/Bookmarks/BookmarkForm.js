@@ -1,6 +1,5 @@
 import { Template } from 'meteor/templating';
 import './BookmarkForm.html';
-import './BookmarkForm.css';
 
 Template.BookmarkForm.onCreated(function() {
   console.log(this.data);

@@ -1,6 +1,6 @@
 <template name="Bookmark">
   <a href={{bookmark.url}} target="_blank" class="Bookmark panel-block">
-    <span class="panel-icon Bookmark-icon">
+    <span class="panel-icon Bookmark-icon js-toggle-star">
       {{#if bookmark.staredAt}}
         <i class="fa fa-star"></i>
       {{else}}
