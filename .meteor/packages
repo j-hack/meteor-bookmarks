@@ -28,3 +28,4 @@ http
 accounts-ui
 accounts-password
 nimble:restivus
+apinf:restivus-swagger
