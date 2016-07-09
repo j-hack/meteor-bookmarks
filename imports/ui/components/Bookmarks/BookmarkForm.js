@@ -23,9 +23,10 @@ Template.BookmarkForm.events({
     const $target = inst.$('[name=title]');
     if (!url || !$target || $target.val()) { return; }
 
-    $target.parent().addClass('is-loading');
+    const $control = $target.parent();
+    $control.addClass('is-loading');
     fetchTitle(url, (err, title) => {
-      $target.parent().removeClass('is-loading');
+      $control.removeClass('is-loading');
       console.log(err, title);
       if (err) { console.error(err); return; }
       if ($target.val()) { return; }
