@@ -1,8 +1,8 @@
 <template name="Bookmark">
   <a href={{bookmark.url}} target="_blank" class="Bookmark panel-block">
     <span class="panel-icon Bookmark-icon js-toggle-star">
-      {{#if bookmark.staredAt}}
-        <i class="fa fa-star"></i>
+      {{#if bookmark.starredAt}}
+        <i class="fa fa-star" style="color: #FAE17A;"></i>
       {{else}}
         <i class="fa fa-star-o"></i>
       {{/if}}

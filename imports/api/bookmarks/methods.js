@@ -12,6 +12,14 @@ Meteor.methods({
     Bookmarks.schema.validate(modifier);
     return Bookmarks.update(docId, { $set: modifier });
   },
+  'Bookmarks.toggleStar'(docId) {
+    const bookmark = Bookmarks.findOne(docId);
+    if (!bookmark) { throw new Meteor.Error('Bookmark not found'); }
+    let modifier = bookmark.starredAt ?
+      { $unset: { starredAt: "" }} :
+      { $set: { starredAt: new Date() }};
+    return Bookmarks.update(docId, modifier);
+  },
   'Bookmarks.remove'(docId) {
     new SimpleSchema({
       docId: {

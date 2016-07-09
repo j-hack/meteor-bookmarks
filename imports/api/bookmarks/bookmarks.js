@@ -33,6 +33,10 @@ Bookmarks.schema = new SimpleSchema({
   url: {
     type: String,
   },
+  starredAt: {
+    type: Date,
+    optional: true,
+  },
   createdAt: {
     type: Date,
     denyUpdate: true,

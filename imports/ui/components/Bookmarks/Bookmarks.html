@@ -5,9 +5,8 @@
     </p>
 
     <p class="panel-tabs">
-      <a class="is-active" href="#">All</a>
-      <a href="#">Stared</a>
-      <a href="#"></a>
+      <a href="#" class="{{#if isActiveTab 'All'}}is-active{{/if}} js-select-tab" data-tab="All">All</a>
+      <a href="#" class="{{#if isActiveTab 'Starred'}}is-active{{/if}} js-select-tab" data-tab="Starred">Starred</a>
     </p>
 
     {{#each bookmark in bookmarks}}

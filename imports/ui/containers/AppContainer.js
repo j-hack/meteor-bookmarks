@@ -1,11 +1,15 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { ReactiveVar } from 'meteor/reactive-var';
 import './AppContainer.html';
 import '../layouts/AppLayout';
 
 import { Bookmarks } from '../../api/collections';
 
+const selectedTab = new ReactiveVar('All')
+
 const props = {
+  selectedTab: selectedTab,
   onSubmitBookmarkForm(event, inst) {
     event.preventDefault();
     const title = event.target.title.value;
@@ -19,7 +23,13 @@ const props = {
       }
     });
   },
-  bookmarks: () => Bookmarks.find({}, {sort: {createdAt: -1}}),
+  bookmarks: () => {
+    let sel = {}
+    if (selectedTab.get() === 'Starred') {
+      sel = {starredAt: {$exists: true}};
+    }
+    return Bookmarks.find(sel, {sort: {createdAt: -1}});
+  },
   count: () => Bookmarks.find().count(),
   fetchTitle(url, callback) {
     Meteor.call('Bookmarks.fetchTitle', url, (err, title) => {

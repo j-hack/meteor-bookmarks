@@ -14,6 +14,7 @@ Template.Bookmark.events({
   'click .js-toggle-star'(event, inst) {
     event.preventDefault();
     console.log(this);
+    Meteor.call('Bookmarks.toggleStar', this.bookmark._id);
   },
 });
 
