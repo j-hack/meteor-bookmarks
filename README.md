@@ -33,7 +33,9 @@ meteor add aldeed:simple-schema \
            arillo:flow-router-helpers \
            zimme:active-route \
            reactive-var \
-           http
+           http \
+           accounts-ui \
+           accounts-password 
 ```
 
 # Code Style
