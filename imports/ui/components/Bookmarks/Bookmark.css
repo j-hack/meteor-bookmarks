@@ -1,6 +1,12 @@
 .Bookmark {
 }
 
+.Bookmark .Bookmark-icon {
+  font-size: 1.2rem;
+  line-height: 135%;
+  margin-right: 5px;
+}
+
 .Bookmark-title {
   display: block;
   font-size: 1.2rem;
