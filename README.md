@@ -1,6 +1,6 @@
 ```bash
-meteor create meteor-rest-example
-cd meteor-rest-example
+meteor create meteor-bookmarks
+cd meteor-bookmarks
 meteor npm install
 meteor
 
@@ -49,4 +49,25 @@ meteor npm install --save-dev eslint@^2.9.0 eslint-config-airbnb eslint-plugin-i
 
 ```bash
 npm install -S bulma font-awesome
+```
+
+# Swagger UI
+
+```bash
+meteor npm install -D swagger-ui node-static
+```
+
+```js
+{
+  // ...
+  "scripts": {
+    // ...
+    "swagger-ui": "static node_modules/swagger-ui/dist"
+  },
+  // ...
+}
+```
+
+```bash
+meteor npm run swagger-ui
 ```
