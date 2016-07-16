@@ -1,10 +1,10 @@
 import { Restivus } from 'meteor/nimble:restivus';
-import { Bookmarks } from '../../api/collections';
+import { Bookmarks } from './collections';
 
 console.log(Restivus);
 
 // Global API Configuration
-const Api = new Restivus({
+export const Api = new Restivus({
   useDefaultAuth: true,
   prettyJson: true
 });
@@ -17,7 +17,7 @@ Api.swagger = {
       version: '1.0.0',
       title: 'My API',
       description: 'My REST API',
-      termsOfService: 'http://localhost:3000/terms/',
+      termsOfService: 'http://example.com/terms/',
       contact: {
         name: 'Example Team'
       },

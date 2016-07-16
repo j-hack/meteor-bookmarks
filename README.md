@@ -69,7 +69,7 @@ meteor npm install -D swagger-ui node-static
 ```
 
 ```bash
-sed -i.bak -e 's/http:\/\/petstore.swagger.io\/v2\/swagger.json/http:\/\/localhost:3000\/api\/swagger.json/' node_modules/swagger-ui/dist/index.html
+sed -i -e 's/http:\/\/petstore.swagger.io\/v2\/swagger.json/http:\/\/localhost:3000\/api\/swagger.json/' node_modules/swagger-ui/dist/index.html
 ```
 
 ```bash
