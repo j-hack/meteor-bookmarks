@@ -51,10 +51,25 @@ meteor npm install --save-dev eslint@^2.9.0 eslint-config-airbnb eslint-plugin-i
 npm install -S bulma font-awesome
 ```
 
+# curl
+
+```bash
+curl -X POST http://localhost:3000/api/login -d 'email=<EMAIL>&password=<PASSWORD>'
+```
+
+```bash
+curl -H "X-Auth-Token: bVUqYbQlqVFNeUYIDIAWj" -H "X-User-Id: thQN4vg7LeudeQjxP" http://localhost:3000/api/bookmarks
+```
+
 # Swagger UI
 
 ```bash
 meteor npm install -D swagger-ui node-static
+```
+
+```bash
+cp -R node_modules/swagger-ui/dist .swagger-ui
+sed -i -e 's/http:\/\/petstore.swagger.io\/v2\/swagger.json/http:\/\/localhost:3000\/api\/swagger.json/' .swagger-ui/index.html
 ```
 
 ```js
@@ -62,14 +77,10 @@ meteor npm install -D swagger-ui node-static
   // ...
   "scripts": {
     // ...
-    "swagger-ui": "static node_modules/swagger-ui/dist"
+    "swagger-ui": "static .swagger-ui"
   },
   // ...
 }
-```
-
-```bash
-sed -i -e 's/http:\/\/petstore.swagger.io\/v2\/swagger.json/http:\/\/localhost:3000\/api\/swagger.json/' node_modules/swagger-ui/dist/index.html
 ```
 
 ```bash

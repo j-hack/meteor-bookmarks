@@ -6,7 +6,7 @@
     "lint": "eslint .",
     "pretest": "npm run lint --silent",
     "postinstall": "cp -R node_modules/font-awesome/fonts ./public/",
-    "swagger-ui": "static node_modules/swagger-ui/dist"
+    "swagger-ui": "static .swagger-ui"
   },
   "dependencies": {
     "bulma": "0.0.28",
