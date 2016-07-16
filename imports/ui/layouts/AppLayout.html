@@ -2,6 +2,8 @@
   <div class="app-layout">
     <div class="container">
 
+      <h1 class="title">Bookmarks</h1>
+
       <div class="tile box mod-no-shadow">
         {{> loginButtons}}
       </div>
@@ -10,9 +12,10 @@
         <div class="tile box mod-no-shadow">
           {{> BookmarkForm props=props}}
         </div>
+
+        {{> Bookmarks bookmarks=props.bookmarks count=props.count selectedTab=props.selectedTab}}
       {{/if}}
 
-      {{> Bookmarks bookmarks=props.bookmarks count=props.count selectedTab=props.selectedTab}}
     </div>
   </div>
 </template>

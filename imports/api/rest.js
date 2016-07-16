@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Restivus } from 'meteor/nimble:restivus';
 import { Bookmarks } from './collections';
 
@@ -24,8 +25,26 @@ Api.swagger = {
       license: {
         name: 'MIT'
       }
-    }
+    },
   },
+  securityDefinitions: {
+    authToken: {
+      type: 'apiKey',
+      description: 'Auth Token',
+      name: 'x-auth-token',
+      in: 'header',
+    },
+    authUserId: {
+      type: 'apiKey',
+      description: 'Auth UserId',
+      name: 'x-user-id',
+      in: 'header',
+    },
+  },
+  security: [
+    { authToken: [] },
+    { authUserId: [] },
+  ],
   definitions: {
     Bookmark: {
       type: 'object',
@@ -37,6 +56,22 @@ Api.swagger = {
     }
   },
   params: {
+    // authToken: {
+    //   name: 'X-Auth-Token',
+    //   description: 'Meteor.users AuthToken',
+    //   in: 'header',
+    //   required: true,
+    //   type: 'string',
+    //   default: '',
+    // },
+    // authUserId: {
+    //   name: 'X-User-Id',
+    //   description: 'Meteor.usersId',
+    //   in: 'header',
+    //   required: true,
+    //   type: 'string',
+    //   default: '',
+    // },
     bookmarkId: {
       name: '_id',
       in: 'path',
@@ -67,7 +102,9 @@ Api.swagger = {
 // Add routes
 Api.addRoute('bookmarks', {
   get: {
+    authRequired: true,
     action: function() {
+      console.log(this.userId);
       return {
         status: 'success',
         data: Bookmarks.find().fetch()
@@ -79,12 +116,14 @@ Api.addRoute('bookmarks', {
       ],
       description: 'Returns bookmarks list',
       parameters: [
+        // Api.swagger.params.authToken,
+        // Api.swagger.params.authUserId,
       ],
-      response: {
+      responses: {
         '200': {
           description: 'Successful bookmarks list'
         }
-      }
+      },
     }
   },
   post: {
@@ -108,7 +147,7 @@ Api.addRoute('bookmarks', {
         Api.swagger.params.bookmarkUrl,
         Api.swagger.params.bookmarkTitle,
       ],
-      response: {
+      responses: {
         200: {
           description: 'Successful creating a new bookmark'
         }
@@ -116,7 +155,5 @@ Api.addRoute('bookmarks', {
     }
   }
 });
-
-
 
 Api.addSwagger('swagger.json');

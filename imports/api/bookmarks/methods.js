@@ -3,7 +3,10 @@ import Bookmarks from './bookmarks';
 
 Meteor.methods({
   'Bookmarks.insert'({url, title}) {
-    const doc = {url, title};
+    if (!this.userId) {
+      new Meteor.Error('Please Sign in to insert bookmark.');
+    }
+    const doc = {url, title, userId: this.userId};
     Bookmarks.schema.validate(doc);
     return Bookmarks.insert(doc);
   },

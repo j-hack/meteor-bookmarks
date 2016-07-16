@@ -41,7 +41,7 @@ const props = {
 };
 
 Template.AppContainer.onCreated(function() {
-  this.subscribe('bookmarks.all');
+  this.subscribe('Bookmarks.all');
 });
 
 Template.AppContainer.onRendered(function() {

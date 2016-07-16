@@ -45,7 +45,11 @@ Bookmarks.schema = new SimpleSchema({
   updatedAt: {
     type: Date,
     optional: true,
-  }
+  },
+  userId: {
+    type: String,
+    optional: true,
+  },
 });
 
 Bookmarks.attachSchema(Bookmarks.schema);
