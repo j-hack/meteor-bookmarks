@@ -38,6 +38,7 @@ h3 {
 }
 
 .Bookmark {
+  position: relative;
 }
 
 .Bookmark .Bookmark-icon {
@@ -50,6 +51,7 @@ h3 {
   display: block;
   font-size: 1.2rem;
   line-height: 130%;
+  padding-right: 10px;
 }
 
 .Bookmark-url {
@@ -65,6 +67,24 @@ h3 {
   width: 100%; /* for lagacy browser */
   width: calc(100% + 20px);
   height: 100%;
+}
+
+.Bookmark-remove {
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  color: #999;
+  visibility: hidden;
+}
+
+.Bookmark:hover .Bookmark-remove {
+  visibility: visible;
+}
+
+.Bookmark:hover .Bookmark-remove:hover {
+  color: #666;
 }
 
 .bookmark-list.mod-square {

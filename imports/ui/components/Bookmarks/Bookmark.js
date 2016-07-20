@@ -11,10 +11,17 @@ Template.Bookmark.onDestroyed(function() {
 });
 
 Template.Bookmark.events({
-  'click .js-toggle-star'(event, inst) {
+  'click .js-toggle-star'(event) {
     event.preventDefault();
-    console.log(this);
     Meteor.call('Bookmarks.toggleStar', this.bookmark._id);
+  },
+  'click .js-remove-bookmark'(event) {
+    event.preventDefault();
+    const result = confirm('Are you sure?');
+    console.log(result);
+    if (result) {
+      Meteor.call('Bookmarks.remove', this.bookmark._id);
+    }
   },
 });
 
