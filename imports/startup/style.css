@@ -87,6 +87,21 @@ h3 {
   color: #666;
 }
 
+.Bookmark-edit {
+  line-height: 170%;
+  font-size: 1rem;
+  color: #999;
+  visibility: hidden;
+}
+
+.Bookmark:hover .Bookmark-edit {
+  visibility: visible;
+}
+
+.Bookmark:hover .Bookmark-edit:hover {
+  color: #999;
+}
+
 .bookmark-list.mod-square {
   position: relative;
   float: left;

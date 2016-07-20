@@ -10,19 +10,6 @@ const selectedTab = new ReactiveVar('All')
 
 const props = {
   selectedTab: selectedTab,
-  onSubmitBookmarkForm(event, inst) {
-    event.preventDefault();
-    const title = event.target.title.value;
-    const url = event.target.url.value;
-    const newDoc = {title, url};
-    Meteor.call('Bookmarks.insert', newDoc, (err, res) => {
-      console.log(err, res);
-      if (!err) {
-        event.target.title.value = "";
-        event.target.url.value = "";
-      }
-    });
-  },
   bookmarks: () => {
     let sel = {}
     if (selectedTab.get() === 'Starred') {
@@ -31,13 +18,6 @@ const props = {
     return Bookmarks.find(sel, {sort: {createdAt: -1}});
   },
   count: () => Bookmarks.find().count(),
-  fetchTitle(url, callback) {
-    Meteor.call('Bookmarks.fetchTitle', url, (err, title) => {
-      if (_.isFunction(callback)) {
-        callback(err, title);
-      }
-    });
-  },
 };
 
 Template.AppContainer.onCreated(function() {

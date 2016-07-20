@@ -1,16 +1,25 @@
 <template name="Bookmark">
-  <a href={{bookmark.url}} target="_blank" class="Bookmark panel-block">
-    <span class="panel-icon Bookmark-icon js-toggle-star">
-      {{#if bookmark.starredAt}}
-        <i class="fa fa-star" style="color: #FAE17A;"></i>
-      {{else}}
-        <i class="fa fa-star-o"></i>
-      {{/if}}
-    </span>
+  {{#if editMode}}
+    <div class="Bookmark panel-block">
+      {{> BookmarkForm bookmark=bookmark editMode=editMode toggleEdit=toggleEdit}}
+    </div>
+  {{else}}
+    <a href={{bookmark.url}} target="_blank" class="Bookmark panel-block">
+      <span class="panel-icon Bookmark-icon js-toggle-star">
+        {{#if bookmark.starredAt}}
+          <i class="fa fa-star" style="color: #FAE17A;"></i>
+        {{else}}
+          <i class="fa fa-star-o"></i>
+        {{/if}}
+      </span>
 
-    <span class="Bookmark-title">{{bookmark.title}}</span>
-    <span class="Bookmark-url">{{bookmark.url}}</span>
+      <span class="Bookmark-title">
+        {{bookmark.title}}
+        <i class="Bookmark-edit js-toggle-edit fa fa-pencil-square-o"></i>
+      </span>
+      <span class="Bookmark-url">{{bookmark.url}}</span>
 
-    <span class="Bookmark-remove js-remove-bookmark">&times;</span>
-  </a>
+      <span class="Bookmark-remove js-remove-bookmark">&times;</span>
+    </a>
+  {{/if}}
 </template>

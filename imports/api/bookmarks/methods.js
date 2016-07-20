@@ -4,16 +4,27 @@ import Bookmarks from './bookmarks';
 Meteor.methods({
   'Bookmarks.insert'({url, title}) {
     if (!this.userId) {
-      new Meteor.Error('Please Sign in to insert bookmark.');
+      throw new Meteor.Error('Please Sign in to insert bookmark.');
     }
     const doc = {url, title, userId: this.userId};
     Bookmarks.schema.validate(doc);
     return Bookmarks.insert(doc);
   },
-  'Bookmarks.update'(docId, {url, title}) {
+  'Bookmarks.update'({_id, url, title}) {
+    if (!this.userId) {
+      throw new Meteor.Error('Please Sign in to update bookmark.');
+    }
     const modifier = {url, title};
     Bookmarks.schema.validate(modifier);
-    return Bookmarks.update(docId, { $set: modifier });
+
+    console.log(_id);
+
+    const bookmark = Bookmarks.findOne(_id);
+    if (!bookmark || (bookmark.userId !== this.userId)) {
+      throw new Meteor.Error('Bad Request');
+    }
+
+    return Bookmarks.update(_id, { $set: modifier });
   },
   'Bookmarks.toggleStar'(docId) {
     const bookmark = Bookmarks.findOne(docId);

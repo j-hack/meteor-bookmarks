@@ -1,11 +1,14 @@
 <template name="BookmarkForm">
   <form class="js-bookmark-form bookmark-form">
+    {{#if bookmark}}
+      <input type="hidden" name="_id" value="{{bookmark._id}}" />
+    {{/if}}
     <div class="control is-horizontal">
       <div class="control-label">
         <label class="label">URL<span style="color: red;">*</span></label>
       </div>
       <p class="control">
-        <input class="input js-fetch-title" type="text" name="url" placeholder="http://...">
+        <input class="input js-fetch-title" type="text" name="url" value="{{bookmark.url}}" placeholder="http://...">
       </p>
     </div>
 
@@ -14,7 +17,7 @@
         <label class="label">Title</label>
       </div>
       <p class="control">
-        <input class="input" type="text" name="title" placeholder="(optional)">
+        <input class="input" type="text" name="title" value="{{bookmark.title}}" placeholder="(optional)">
       </p>
     </div>
 
@@ -22,7 +25,13 @@
       <div class="control-label"></div>
 
       <p class="control">
-        <button type="submit" class="button is-primary is-fullwidth">Add</button>
+        {{#if editMode}}
+          <button type="button" class="button js-cancel-edit">Cancel</button>
+          &nbsp;
+          <button type="submit" class="button is-primary">Update</button>
+        {{else}}
+          <button type="submit" class="button is-primary is-fullwidth">Add</button>
+        {{/if}}
       </p>
     </div>
   </form>
