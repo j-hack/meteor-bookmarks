@@ -2,13 +2,13 @@ import { Meteor } from 'meteor/meteor';
 import { Restivus } from 'meteor/nimble:restivus';
 import { Bookmarks } from './collections';
 
-console.log(Restivus);
-
 // Global API Configuration
 export const Api = new Restivus({
   useDefaultAuth: true,
   prettyJson: true
 });
+
+global.RestApi = Api; // for debug
 
 // Restivus Swagger
 Api.swagger = {
@@ -27,24 +27,24 @@ Api.swagger = {
       }
     },
   },
-  securityDefinitions: {
-    authToken: {
-      type: 'apiKey',
-      description: 'Auth Token',
-      name: 'x-auth-token',
-      in: 'header',
-    },
-    authUserId: {
-      type: 'apiKey',
-      description: 'Auth UserId',
-      name: 'x-user-id',
-      in: 'header',
-    },
-  },
-  security: [
-    { authToken: [] },
-    { authUserId: [] },
-  ],
+  // securityDefinitions: {
+  //   authToken: {
+  //     type: 'apiKey',
+  //     description: 'Auth Token',
+  //     name: 'x-auth-token',
+  //     in: 'header',
+  //   },
+  //   authUserId: {
+  //     type: 'apiKey',
+  //     description: 'Auth UserId',
+  //     name: 'x-user-id',
+  //     in: 'header',
+  //   },
+  // },
+  // security: [
+  //   { authToken: [] },
+  //   { authUserId: [] },
+  // ],
   definitions: {
     Bookmark: {
       type: 'object',
@@ -72,6 +72,20 @@ Api.swagger = {
     //   type: 'string',
     //   default: '',
     // },
+    limit: {
+      name: 'limit',
+      in: 'query',
+      description: 'Limit',
+      required: false,
+      type: 'number'
+    },
+    skip: {
+      name: 'skip',
+      in: 'query',
+      description: 'Skip',
+      required: false,
+      type: 'number'
+    },
     bookmarkId: {
       name: '_id',
       in: 'path',
@@ -100,14 +114,20 @@ Api.swagger = {
 };
 
 // Add routes
-Api.addRoute('bookmarks', {
+Api.addRoute('bookmarks', {authRequired: true}, {
   get: {
-    authRequired: true,
     action: function() {
-      console.log(this.userId);
+      const selector = {userId: this.userId};
+
+      const options = {};
+      const {limit, skip} = this.queryParams;
+
+      options.limit = parseInt(limit, 10) || 100;
+      options.skip  = parseInt(skip, 10)  || 0;
+
       return {
         status: 'success',
-        data: Bookmarks.find().fetch()
+        data: Bookmarks.find(selector, options).fetch()
       }
     },
     swagger: {
@@ -116,8 +136,8 @@ Api.addRoute('bookmarks', {
       ],
       description: 'Returns bookmarks list',
       parameters: [
-        // Api.swagger.params.authToken,
-        // Api.swagger.params.authUserId,
+        Api.swagger.params.limit,
+        Api.swagger.params.skip,
       ],
       responses: {
         '200': {
@@ -129,8 +149,12 @@ Api.addRoute('bookmarks', {
   post: {
     action: function() {
       console.log(this.bodyParams)
-      const doc = { url, title } = this.bodyParams;
+      const { url, title } = this.bodyParams;
+      const userId = this.userId;
+      const doc = {url, title, userId};
+
       Bookmarks.schema.validate(doc);
+
       const docId = Bookmarks.insert(doc);
 
       return {

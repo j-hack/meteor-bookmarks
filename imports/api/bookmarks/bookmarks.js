@@ -32,6 +32,7 @@ Bookmarks.schema = new SimpleSchema({
   },
   url: {
     type: String,
+    regEx: SimpleSchema.RegEx.Url,
   },
   starredAt: {
     type: Date,

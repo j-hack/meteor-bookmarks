@@ -35,7 +35,7 @@
       if (url && url.length > 1) {
         url = decodeURIComponent(url[1]);
       } else {
-        url = "http://petstore.swagger.io/v2/swagger.json";
+        url = "http://localhost:3000/api/swagger.json";
       }
 
       // Pre load translate...
@@ -52,7 +52,7 @@
               clientId: "your-client-id",
               clientSecret: "your-client-secret-if-required",
               realm: "your-realms",
-              appName: "your-app-name", 
+              appName: "your-app-name",
               scopeSeparator: ",",
               additionalQueryStringParams: {}
             });
@@ -66,7 +66,8 @@
             hljs.highlightBlock(e)
           });
 
-          addApiKeyAuthorization();
+          addApiAuthTokenAuthorization();
+          addApiUserIdAuthorization();
         },
         onFailure: function(data) {
           log("Unable to Load SwaggerUI");
@@ -75,19 +76,36 @@
         jsonEditor: false,
         apisSorter: "alpha",
         defaultModelRendering: 'schema',
-        showRequestHeaders: false
+        showRequestHeaders: true
       });
 
-      function addApiKeyAuthorization(){
-        var key = encodeURIComponent($('#input_apiKey')[0].value);
-        if(key && key.trim() != "") {
-            var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("api_key", key, "query");
-            window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
-            log("added key " + key);
+      function addApiAuthTokenAuthorization(){
+        var authToken = encodeURIComponent($('#input_authToken')[0].value);
+
+        if (authToken && authToken.trim() != "") {
+          var apiAuthToken = new SwaggerClient.ApiKeyAuthorization("x-auth-token", authToken, "header");
+          window.swaggerUi.api.clientAuthorizations.add("authToken", apiAuthToken);
+          log("added authToken " + authToken);
+        } else {
+          window.swaggerUi.api.clientAuthorizations.remove("authToken");
+          log("cleared authToken");
         }
       }
 
-      $('#input_apiKey').change(addApiKeyAuthorization);
+      function addApiUserIdAuthorization() {
+        var userId = encodeURIComponent($('#input_userId')[0].value);
+        if (userId && userId.trim() != "") {
+          var apiUserId = new SwaggerClient.ApiKeyAuthorization("x-user-id", userId, "header");
+          window.swaggerUi.api.clientAuthorizations.add("authUserId", apiUserId);
+          log("added userId " + userId);
+        } else {
+          window.swaggerUi.api.clientAuthorizations.remove("authUserId");
+          log("cleared authUserId");
+        }
+      }
+
+      $('#input_authToken').change(addApiAuthTokenAuthorization);
+      $('#input_userId').change(addApiUserIdAuthorization);
 
       // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
       /*
@@ -111,8 +129,9 @@
   <div class="swagger-ui-wrap">
     <a id="logo" href="http://swagger.io">swagger</a>
     <form id='api_selector'>
-      <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
-      <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
+      <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text" style="width: 300px;"/></div>
+      <div class='input'><input placeholder="authToken" id="input_authToken" name="authToken" type="text"/></div>
+      <div class='input'><input placeholder="userId" id="input_userId" name="userId" type="text"/></div>
       <div class='input'><a id="explore" href="#" data-sw-translate>Explore</a></div>
     </form>
   </div>
